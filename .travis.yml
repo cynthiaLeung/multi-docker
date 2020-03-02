@@ -5,20 +5,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t cynthia/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t ghostyat/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true cynthia/react-test npm test
+  - docker run -e CI=true ghostyat/react-test npm test
 
 after_success:
-  - docker build -t cynthia/multi-client ./client
-  - docker build -t cynthia/multi-nginx ./nginx
-  - docker build -t cynthia/multi-worker ./worker
-  - docker build -t cynthia/multi-server ./server
+  - docker build -t ghostyat/multi-client ./client
+  - docker build -t ghostyat/multi-nginx ./nginx
+  - docker build -t ghostyat/multi-worker ./worker
+  - docker build -t ghostyat/multi-server ./server
   #Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Take those images and push to docker hub
-  - docker push cynthia/multi-client
-  - docker push cynthia/multi-nginx
-  - docker push cynthia/multi-worker
-  - docker push cynthia/multi-server
+  - docker push ghostyat/multi-client
+  - docker push ghostyat/multi-nginx
+  - docker push ghostyat/multi-worker
+  - docker push ghostyat/multi-server
