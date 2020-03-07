@@ -4,30 +4,34 @@
 			"name": "client",
 			"image": "ghostyat/multi-client",
 			"hostname": "client",
-			"essential": false
+			"essential": false,
+            "memory": 128
 		},
 		{
 			"name": "server",
 			"image": "ghostyat/multi-server",
 			"hostname": "api",
-			"essential": false
+			"essential": false,
+            "memory": 128
 		},
 		{
 			"name": "worker",
 			"image": "ghostyat/multi-worker",
 			"hostname": "worker",
-			"essential": false
+			"essential": false,
+            "memory": 128
 		},
 		{
 			"name": "nginx",
 			"image": "ghostyat/multi-nginx",
 			"hostname": "nginx",
-			"essential": true,
+			"essential": true,            
 			"portMappings": [{
 				"hostPort": 80,
 				"containerPort": 80
 			}],
-			"Links": ["client", "server"]
+			"Links": ["client", "server"],
+            "memory": 128,
 		}
 	]
 }
